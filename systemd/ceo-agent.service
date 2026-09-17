@@ -1,0 +1,18 @@
+[Unit]
+Description=CEO Agent — event-driven decision engine (LISTEN/NOTIFY)
+After=network.target postgresql.service
+Wants=network.target
+
+[Service]
+Type=simple
+User=successbrian
+WorkingDirectory=/home/successbrian/ceo-agent
+EnvironmentFile=/home/successbrian/ceo-agent/.env
+ExecStart=/usr/bin/python3 /home/successbrian/ceo-agent/ceo_agent.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
