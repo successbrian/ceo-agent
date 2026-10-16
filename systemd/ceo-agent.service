@@ -5,10 +5,11 @@ Wants=network.target
 
 [Service]
 Type=simple
+# Change User= to whoever runs the agent; %h below resolves to that user's home.
 User=successbrian
-WorkingDirectory=/home/successbrian/ceo-agent
-EnvironmentFile=/home/successbrian/ceo-agent/.env
-ExecStart=/usr/bin/python3 /home/successbrian/ceo-agent/ceo_agent.py
+WorkingDirectory=%h/ceo-agent
+EnvironmentFile=%h/ceo-agent/.env
+ExecStart=/usr/bin/python3 %h/ceo-agent/ceo_agent.py
 Restart=always
 RestartSec=5
 StandardOutput=journal
